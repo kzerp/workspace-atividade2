@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</h:head>
+<h:body>
+    <h1>Cadastro de Cliente</h1>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel value="Nome:" for="nome" />
+            <h:inputText id="nome" value="#{clienteBean.nome}" required="true" styleClass="campoInput" />
+
+            <h:outputLabel value="Sobrenome:" for="sobrenome" />
+            <h:inputText id="sobrenome" value="#{clienteBean.sobrenome}" required="true" styleClass="campoInput" />
+
+            <h:outputLabel value="Email:" for="email" />
+            <h:inputText id="email" value="#{clienteBean.email}" required="true" styleClass="campoInput" type="email" />
+
+            <h:outputLabel value="Telefone:" for="telefone" />
+            <h:inputText id="telefone" value="#{clienteBean.telefone}" styleClass="campoInput" />
+
+            <h:outputLabel value="Endereço:" for="endereco" />
+            <h:inputText id="endereco" value="#{clienteBean.endereco}" styleClass="campoInput" />
+
+            <h:outputLabel value="Número:" for="numero" />
+            <h:inputText id="numero" value="#{clienteBean.numero}" styleClass="campoInput" />
+
+            <h:outputLabel value="Complemento:" for="complemento" />
+            <h:inputText id="complemento" value="#{clienteBean.complemento}" styleClass="campoInput" />
+
+            <h:outputLabel value="Bairro:" for="bairro" />
+            <h:inputText id="bairro" value="#{clienteBean.bairro}" styleClass="campoInput" />
+
+            <h:outputLabel value="Cidade:" for="cidade" />
+            <h:inputText id="cidade" value="#{clienteBean.cidade}" styleClass="campoInput" />
+
+            <h:outputLabel value="Estado:" for="estado" />
+            <h:inputText id="estado" value="#{clienteBean.estado}" styleClass="campoInput" maxlength="2" />
+
+            <h:outputLabel value="CEP:" for="cep" />
+            <h:inputText id="cep" value="#{clienteBean.cep}" styleClass="campoInput" maxlength="9">
+                <f:convertNumber pattern="#####-###" />  </h:inputText>
+
+            <h:outputLabel value="Forma de Pagamento:" for="pagamento"/>
+            <h:selectOneMenu id="pagamento" value="#{clienteBean.formaPagamento}" styleClass="campoInput">
+                <f:selectItem itemValue="credito" itemLabel="Cartão de Crédito"/>
+                <f:selectItem itemValue="boleto" itemLabel="Boleto Bancário"/>
+                <f:selectItem itemValue="pix" itemLabel="Pix"/>
+            </h:selectOneMenu>
+
+            <h:outputLabel value="Número do Cartão (se Crédito):" for="numCartao"/>
+            <h:inputText id="numCartao" value="#{clienteBean.numCartao}" styleClass="campoInput" rendered="#{clienteBean.formaPagamento == 'credito'}"/>
+
+            <h:outputLabel value="Nome no Cartão (se Crédito):" for="nomeCartao"/>
+             <h:inputText id="nomeCartao" value="#{clienteBean.nomeCartao}" styleClass="campoInput" rendered="#{clienteBean.formaPagamento == 'credito'}"/>
+
+            <h:outputLabel value="Data de Validade (MM/AA, se Crédito):" for="validadeCartao"/>
+            <h:inputText id="validadeCartao" value="#{clienteBean.validadeCartao}" styleClass="campoInput" rendered="#{clienteBean.formaPagamento == 'credito'}">
+                <f:convertDateTime pattern="MM/yy" />
+            </h:inputText>
+
+            <h:outputLabel value="CVV (se Crédito):" for="cvvCartao"/>
+            <h:inputText id="cvvCartao" value="#{clienteBean.cvvCartao}" styleClass="campoInput" rendered="#{clienteBean.formaPagamento == 'credito'}" />
+
+            <h:commandButton value="Cadastrar" action="#{clienteBean.cadastrarCliente}" styleClass="botaoCadastrar"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
