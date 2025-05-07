@@ -31,16 +31,16 @@ h:outputLabel {
 }
 
 .campoInput {
-    width: calc(100% - 10px); /* Usar calc para subtrair o padding/border */
+    width: calc(100% - 10px); 
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Inclui padding e border no tamanho */
+    box-sizing: border-box; 
 }
 
 .botaoCadastrar {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -50,5 +50,5 @@ h:outputLabel {
 }
 
 .botaoCadastrar:hover {
-    background-color: #3e8e41; /* Verde mais escuro no hover */
+    background-color: #3e8e41; 
 }
